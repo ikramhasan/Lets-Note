@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:note_app/blocs/note_bloc.dart';
 import 'package:note_app/screens/screens.dart';
@@ -64,18 +65,24 @@ class NoteScreen extends StatelessWidget {
                   )
                 : Expanded(
                     child: GetBuilder<NoteBloc>(builder: (_) {
-                      return GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 2,
-                        children: List.generate(
-                          noteBloc.noteList.length,
-                          (index) => Padding(
-                            padding: EdgeInsets.only(
-                                right: index.isEven ? 10 : 0, bottom: 10),
-                            child: NoteCard(noteBloc.noteList[index]),
-                          ),
-                        ),
+                      return StaggeredGridView.count(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        
                       );
+                      //GridView.count(
+                      //  shrinkWrap: true,
+                      //  crossAxisCount: 2,
+                      //  children: List.generate(
+                      //    noteBloc.noteList.length,
+                      //    (index) => Padding(
+                      //      padding: EdgeInsets.only(
+                      //          right: index.isEven ? 10 : 0, bottom: 10),
+                      //      child: NoteCard(noteBloc.noteList[index]),
+                      //    ),
+                      //  ),
+                      //);
                     }),
                   ),
           ],
