@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:note_app/models/models.dart';
+import 'package:note_app/data/note_database.dart';
+import 'package:note_app/screens/add_note.dart';
 import 'package:note_app/screens/screens.dart';
 
 class NoteCard extends StatelessWidget {
   final Note note;
+  final AppDatabase database;
 
-  const NoteCard(this.note);
+  const NoteCard({this.note, this.database});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class NoteCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: note.color,
+          color: Color(note.colorValue),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(
@@ -29,7 +31,7 @@ class NoteCard extends StatelessWidget {
               ),
             ),
             Text(
-              DateFormat.yMMMMd('en_US').format(note.date),
+              DateFormat.yMMMMd('en_US').format(note.createdAt),
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[700],
