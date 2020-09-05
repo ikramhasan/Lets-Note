@@ -29,8 +29,11 @@ class _AddNoteState extends State<AddNote> {
       Color(0xFF82DEE9),
       Color(0xFFCE95D6),
       Color(0xFFF38FB0),
+      Color(0xFFC7D8C6),
+      Color(0xFF8089B4),
+      Color(0xFFCBB8CB),
+      Color(0xFFC29BB8),
     ];
-
     Color color = colorList[colorIndex];
 
     final database = Provider.of<AppDatabase>(context);
@@ -83,17 +86,18 @@ class _AddNoteState extends State<AddNote> {
                     children: [
                       InkWell(
                         onTap: () {
-                          setState(() {
-                            color = colorList[index];
-                          });
+                          color = colorList[index];
                         },
                         child: Container(
-                          height: 40,
-                          width: 40,
+                          height: 45,
+                          width: 45,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             color: colorList[index],
                           ),
+                          //child: colorList[index] == color
+                          //    ? Icon(Icons.done)
+                          //    : Container(),
                         ),
                       ),
                       SizedBox(width: 10),
