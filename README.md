@@ -1,6 +1,6 @@
-# note_app
+# Simple Note Taking App Using Flutter
 
-A new Flutter project.
+This is a simple note taking app built using flutter. The design was inspired from [LightWeight Note App](https://dribbble.com/shots/11875872-A-simple-and-lightweight-note-app)
 
 ## Getting Started
 
