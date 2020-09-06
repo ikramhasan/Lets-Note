@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/widgets/widgets.dart';
@@ -20,7 +21,6 @@ class _AddNoteState extends State<AddNote> {
 
   @override
   Widget build(BuildContext context) {
-
     final colorList = [
       Color(0xFF82DEE9),
       Color(0xFFFEAA93),
@@ -60,85 +60,87 @@ class _AddNoteState extends State<AddNote> {
     }
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomAppbar(
-              onTap: () {
-                widget.note == null ? createNote() : updateNote();
-                Navigator.pop(context);
-              },
-            ),
-            SizedBox(height: 25),
-            LimitedBox(
-              maxHeight: 50,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: colorList.length,
-                itemBuilder: (context, index) {
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          color = colorList[index];
-                        },
-                        child: Container(
-                          height: 45,
-                          width: 45,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: colorList[index],
-                          ),
-                          //child: colorList[index] == color
-                          //    ? Icon(Icons.done)
-                          //    : Container(),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                    ],
-                  );
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomAppbar(
+                onTap: () {
+                  widget.note == null ? createNote() : updateNote();
+                  Navigator.pop(context);
                 },
               ),
-            ),
-            TextField(
-              controller: _titleController,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              style: TextStyle(fontSize: 35),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Title',
-                hintStyle: TextStyle(fontSize: 35),
+              SizedBox(height: 25),
+              LimitedBox(
+                maxHeight: 50,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: colorList.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            color = colorList[index];
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: colorList[index],
+                            ),
+                            //child: colorList[index] == color
+                            //    ? Icon(Icons.done)
+                            //    : Container(),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                      ],
+                    );
+                  },
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            widget.note != null
-                ? Text(
-                    DateFormat.yMMMMd('en_US').format(widget.note.createdAt),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey[700],
-                    ),
-                  )
-                : Container(),
-            widget.note != null ? SizedBox(height: 20) : Container(),
-            TextField(
-              controller: _descriptionController,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              style: TextStyle(fontSize: 22),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Type Something...',
-                hintStyle: TextStyle(fontSize: 22),
+              TextField(
+                controller: _titleController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                style: TextStyle(fontSize: 35),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Title',
+                  hintStyle: TextStyle(fontSize: 35),
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              widget.note != null
+                  ? Text(
+                      DateFormat.yMMMMd('en_US').format(widget.note.createdAt),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.grey[700],
+                      ),
+                    )
+                  : Container(),
+              widget.note != null ? SizedBox(height: 20) : Container(),
+              TextField(
+                controller: _descriptionController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                style: TextStyle(fontSize: 22),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'Type Something...',
+                  hintStyle: TextStyle(fontSize: 22),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: widget.note != null
@@ -148,10 +150,7 @@ class _AddNoteState extends State<AddNote> {
                 Navigator.pop(context);
               },
               backgroundColor: Colors.red[400],
-              child: Icon(
-                Icons.delete,
-                color: Colors.white,
-              ),
+              child: FaIcon(FontAwesomeIcons.trashAlt),
             )
           : Container(),
     );

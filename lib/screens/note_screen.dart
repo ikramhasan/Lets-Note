@@ -1,6 +1,8 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/add_note.dart';
 import 'package:note_app/widgets/note_card.dart';
@@ -23,7 +25,7 @@ class NoteScreen extends StatelessWidget {
               children: [
                 Text(
                   'Notes',
-                  style: TextStyle(fontSize: 35),
+                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
                 ),
                 InkWell(
                   onTap: () {
@@ -85,7 +87,8 @@ class NoteScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Center(
-                                  child: Icon(Icons.search),
+                                  child: Center(
+                                      child: FaIcon(FontAwesomeIcons.search)),
                                 ),
                               ),
                             ),
@@ -101,7 +104,7 @@ class NoteScreen extends StatelessWidget {
                       color: Colors.grey[800],
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Icon(Icons.search),
+                    child: Center(child: FaIcon(FontAwesomeIcons.search)),
                   ),
                 ),
               ],
@@ -112,6 +115,13 @@ class NoteScreen extends StatelessWidget {
                 stream: database.watchAllNotes(),
                 builder: (context, snapshot) {
                   final notes = snapshot.data ?? List();
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                        child: SpinKitCircle(
+                      color: Colors.white,
+                      size: 50,
+                    ));
+                  }
                   return snapshot.data.length > 0
                       ? GridView.count(
                           physics: BouncingScrollPhysics(),
@@ -164,8 +174,8 @@ class NoteScreen extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (_) => AddNote()));
         },
         backgroundColor: Colors.grey[800],
-        child: Icon(
-          Icons.add,
+        child: FaIcon(
+          FontAwesomeIcons.plus,
           color: Colors.white,
         ),
       ),

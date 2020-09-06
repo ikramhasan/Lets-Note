@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/add_note.dart';
 import 'package:provider/provider.dart';
@@ -45,7 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 });
               });
             },
-            child: Icon(Icons.search),
+            child: FaIcon(FontAwesomeIcons.search),
           ),
         ],
       ),

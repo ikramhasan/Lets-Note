@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomAppbar extends StatelessWidget {
   final Function onTap;
@@ -26,7 +27,7 @@ class CustomAppbar extends StatelessWidget {
                 color: Colors.grey[800],
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Icon(Icons.arrow_back_ios),
+              child: Center(child: FaIcon(FontAwesomeIcons.search)),
             ),
           ),
           GestureDetector(
@@ -41,7 +42,7 @@ class CustomAppbar extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Save',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ),
             ),
