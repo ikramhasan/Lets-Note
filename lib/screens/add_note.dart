@@ -20,13 +20,12 @@ class _AddNoteState extends State<AddNote> {
 
   @override
   Widget build(BuildContext context) {
-    int colorIndex = 0;
 
     final colorList = [
+      Color(0xFF82DEE9),
       Color(0xFFFEAA93),
       Color(0xFFFECB86),
       Color(0xFFE6EDA1),
-      Color(0xFF82DEE9),
       Color(0xFFCE95D6),
       Color(0xFFF38FB0),
       Color(0xFFC7D8C6),
@@ -34,7 +33,7 @@ class _AddNoteState extends State<AddNote> {
       Color(0xFFCBB8CB),
       Color(0xFFC29BB8),
     ];
-    Color color = colorList[colorIndex];
+    Color color = colorList[0];
 
     final database = Provider.of<AppDatabase>(context);
 

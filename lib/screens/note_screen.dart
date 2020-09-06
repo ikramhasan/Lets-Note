@@ -1,3 +1,4 @@
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/data/note_database.dart';
@@ -9,10 +10,11 @@ class NoteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final database = Provider.of<AppDatabase>(context);
+    bool hasFound = false;
     final TextEditingController controller = TextEditingController();
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -34,31 +36,45 @@ class NoteScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text('Search'),
-                            TextField(controller: controller),
+                            TextField(
+                              controller: controller,
+                              decoration: InputDecoration(
+                                hintText: 'Search by title or description',
+                              ),
+                            ),
                             SizedBox(height: 10),
                             InkWell(
                               onTap: () {
                                 database.getAllNotes().then((value) {
-                                  value.any((element) {
-                                    if ((element.title.toLowerCase() ==
+                                  for (final note in value) {
+                                    if ((note.title.toLowerCase() ==
                                             controller.text.toLowerCase()) ||
-                                        (element.description.toLowerCase() ==
+                                        (note.description.toLowerCase() ==
                                             controller.text.toLowerCase())) {
-                                      print(element.title);
-                                      print(true);
+                                      hasFound = true;
+                                      Navigator.pop(context);
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                AddNote(note: element),
-                                          ));
-                                      return true;
-                                    } else {
-                                      print(false);
-                                      return false;
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              AddNote(note: note),
+                                        ),
+                                      );
                                     }
-                                  });
+                                  }
+                                  if (hasFound == false) {
+                                    Flushbar(
+                                      margin: EdgeInsets.all(20),
+                                      dismissDirection:
+                                          FlushbarDismissDirection.HORIZONTAL,
+                                      borderColor: Colors.red,
+                                      borderRadius: 10,
+                                      forwardAnimationCurve:
+                                          Curves.fastLinearToSlowEaseIn,
+                                      messageText:
+                                          Text('Could not find relevant note'),
+                                    ).show(context);
+                                  }
                                 });
                               },
                               child: Container(
@@ -97,6 +113,7 @@ class NoteScreen extends StatelessWidget {
                 builder: (context, snapshot) {
                   final notes = snapshot.data ?? List();
                   return GridView.count(
+                    physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     crossAxisCount: 2,
                     children: List.generate(
@@ -127,5 +144,3 @@ class NoteScreen extends StatelessWidget {
     );
   }
 }
-
-//database.getAllNotes().then((value) => value.where((element) => element.title == ));
