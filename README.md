@@ -8,11 +8,11 @@ Go to the [releases page](https://github.com/ikramhasan/Flutter-Note-App/release
 
 ## App preview
 
-![Empty Note](screenshots/empty.note.jpg "Empty Note")
-![Add Note](screenshots/add.note.jpg "Add Note")
-![Edit Note](screenshots/edit.note.jpg "Edit Note")
-![Home](screenshots/home.jpg "Home")
-![Search](screenshots/search.jpg "Search")
+<img src="screenshots/empty.note.jpg" alt="Empty Note" width="270"/>
+<img src="screenshots/add.note.jpg" alt="Add Note" width="270"/>
+<img src="screenshots/edit.note.jpg" alt="Edit Note" width="270"/>
+<img src="screenshots/home.jpg" alt="Home" width="270"/>
+<img src="screenshots/search.jpg" alt="Search" width="270"/>
 
 ## Upcoming Features
 
