@@ -112,6 +112,11 @@ class NoteScreen extends StatelessWidget {
                 stream: database.watchAllNotes(),
                 builder: (context, snapshot) {
                   final notes = snapshot.data ?? List();
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
                   return snapshot.data.length > 0
                       ? GridView.count(
                           physics: BouncingScrollPhysics(),
