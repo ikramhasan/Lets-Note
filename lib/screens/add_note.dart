@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:note_app/blocs/note_bloc.dart';
 import 'package:note_app/data/note_database.dart';
-import 'package:note_app/widgets/buttons.dart';
 import 'package:note_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,7 @@ class _AddNoteState extends State<AddNote> {
 
   @override
   Widget build(BuildContext context) {
-    final database = Provider.of<AppDatabase>(context);
+    final noteBloc = Provider.of<NoteBloc>(context);
 
     final colorList = [
       Color(0xFF82DEE9),
@@ -52,14 +52,14 @@ class _AddNoteState extends State<AddNote> {
         createdAt: DateTime.now(),
         colorValue: color.value,
       );
-      database.insertNote(note);
+      noteBloc.createNote(note);
     }
 
     updateNote() {
       widget.note.title = _titleController.text;
       widget.note.description = _descriptionController.text;
       widget.note.colorValue = color.value;
-      database.updateNote(widget.note);
+      noteBloc.updateNote(widget.note);
     }
 
     buildTick(Note note, Color color) {
@@ -85,10 +85,36 @@ class _AddNoteState extends State<AddNote> {
                   Navigator.pop(context);
                 },
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 10),
               LimitedBox(
                 maxHeight: 50,
-                child: ColorPicker(note: widget.note),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: colorList.length,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            color = colorList[index];
+                          },
+                          child: Container(
+                            height: 45,
+                            width: 45,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: colorList[index],
+                            ),
+                            child: buildTick(widget.note, colorList[index]),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                      ],
+                    );
+                  },
+                ),
               ),
               TextField(
                 controller: _titleController,
@@ -131,7 +157,7 @@ class _AddNoteState extends State<AddNote> {
           ? AppButton(
               buttonType: ButtonType.DELETE_BUTTON,
               onPressed: () {
-                database.deleteNote(widget.note);
+                noteBloc.deleteNote(widget.note);
                 Navigator.pop(context);
               })
           : Container(),

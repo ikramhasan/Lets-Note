@@ -1,15 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/blocs/note_bloc.dart';
-import 'package:note_app/data/note_database.dart';
-import 'package:note_app/screens/add_note.dart';
-import 'package:note_app/screens/search_screen.dart';
-import 'package:note_app/widgets/buttons.dart';
-import 'package:note_app/widgets/custom_appbar.dart';
-import 'package:note_app/widgets/empty_note.dart';
-import 'package:note_app/widgets/note_card.dart';
+import 'package:note_app/screens/screens.dart';
+import 'package:note_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class NoteScreen extends StatelessWidget {
@@ -34,7 +28,6 @@ class NoteScreen extends StatelessWidget {
                     ),
                   );
                 }),
-            SizedBox(height: 20),
             Expanded(
               child: StreamBuilder(
                 stream: noteBloc.database.watchAllNotes(),

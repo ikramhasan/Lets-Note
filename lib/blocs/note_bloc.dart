@@ -12,16 +12,15 @@ class NoteBloc {
     database.deleteNote(note);
   }
 
+  updateNote(Note note) {
+    database.updateNote(note);
+  }
+
   streamAllNotes() {
     database.watchAllNotes();
   }
 
   getAllNotes() {
     database.getAllNotes();
-  }
-
-  updateColor(Note note, Color color) {
-    note.colorValue = color.value;
-    database.updateNote(note);
   }
 }
