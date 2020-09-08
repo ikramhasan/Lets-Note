@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/add_note.dart';
@@ -25,7 +26,7 @@ class NoteCard extends StatelessWidget {
               note.title,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
-              style: TextStyle(
+              style: GoogleFonts.ubuntu(
                 fontSize: 20,
                 color: Colors.black,
               ),
@@ -33,7 +34,7 @@ class NoteCard extends StatelessWidget {
             Text(
               note.description,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: GoogleFonts.ubuntu(
                 fontSize: 14,
                 color: Colors.grey[800],
               ),

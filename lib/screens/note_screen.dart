@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/add_note.dart';
@@ -26,7 +27,10 @@ class NoteScreen extends StatelessWidget {
               children: [
                 Text(
                   'Notes',
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
+                  style: GoogleFonts.ubuntu(
+                    fontSize: 36,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
                 InkWell(
                   borderRadius: BorderRadius.circular(10),

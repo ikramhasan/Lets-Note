@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:note_app/data/note_database.dart';
@@ -118,11 +119,11 @@ class _AddNoteState extends State<AddNote> {
                 controller: _titleController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: TextStyle(fontSize: 35),
+                style: GoogleFonts.ubuntu(fontSize: 35),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Title',
-                  hintStyle: TextStyle(fontSize: 35),
+                  hintStyle: GoogleFonts.ubuntu(fontSize: 35),
                 ),
               ),
               SizedBox(height: 20),
@@ -140,11 +141,11 @@ class _AddNoteState extends State<AddNote> {
                 controller: _descriptionController,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
-                style: TextStyle(fontSize: 22),
+                style: GoogleFonts.ubuntu(fontSize: 22),
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Type Something...',
-                  hintStyle: TextStyle(fontSize: 22),
+                  hintStyle: GoogleFonts.ubuntu(fontSize: 22),
                 ),
               ),
             ],
