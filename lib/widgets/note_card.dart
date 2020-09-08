@@ -31,15 +31,19 @@ class NoteCard extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Text(
-              note.description,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.ubuntu(
-                fontSize: 14,
-                color: Colors.grey[800],
+            SizedBox(height: 5),
+            Expanded(
+              child: Text(
+                note.description,
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.ubuntu(
+                  fontSize: 14,
+                  color: Colors.grey[800],
+                ),
               ),
             ),
+            SizedBox(height: 5),
             Text(
               DateFormat.yMMMMd('en_US').format(note.createdAt),
               style: TextStyle(

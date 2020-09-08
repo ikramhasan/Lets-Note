@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/blocs/note_bloc.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/screens.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (context) => AppDatabase(),
+      create: (context) => NoteBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

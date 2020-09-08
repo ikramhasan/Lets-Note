@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:lottie/lottie.dart';
 import 'package:note_app/data/note_database.dart';
+import 'package:note_app/widgets/buttons.dart';
 import 'package:note_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -79,6 +79,7 @@ class _AddNoteState extends State<AddNote> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppbar(
+                appbarType: AppbarType.ADD_NOTE_SCREEN,
                 onTap: () {
                   widget.note == null ? createNote() : updateNote();
                   Navigator.pop(context);
@@ -87,33 +88,7 @@ class _AddNoteState extends State<AddNote> {
               SizedBox(height: 25),
               LimitedBox(
                 maxHeight: 50,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: colorList.length,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            color = colorList[index];
-                          },
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: colorList[index],
-                            ),
-                            child: buildTick(widget.note, colorList[index]),
-                          ),
-                        ),
-                        SizedBox(width: 10),
-                      ],
-                    );
-                  },
-                ),
+                child: ColorPicker(note: widget.note),
               ),
               TextField(
                 controller: _titleController,
@@ -153,17 +128,12 @@ class _AddNoteState extends State<AddNote> {
         ),
       ),
       floatingActionButton: widget.note != null
-          ? FloatingActionButton(
+          ? AppButton(
+              buttonType: ButtonType.DELETE_BUTTON,
               onPressed: () {
                 database.deleteNote(widget.note);
                 Navigator.pop(context);
-              },
-              backgroundColor: Colors.red,
-              child: Lottie.asset(
-                'assets/animations/delete.json',
-                frameRate: FrameRate(60),
-              ),
-            )
+              })
           : Container(),
     );
   }
