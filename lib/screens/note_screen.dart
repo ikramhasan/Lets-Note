@@ -1,7 +1,7 @@
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -133,18 +133,20 @@ class NoteScreen extends StatelessWidget {
                     );
                   }
                   return snapshot.data.length > 0
-                      ? GridView.count(
-                          physics: BouncingScrollPhysics(),
+                      ? StaggeredGridView.countBuilder(
                           shrinkWrap: true,
                           crossAxisCount: 2,
-                          children: List.generate(
-                            notes.length,
-                            (index) => Padding(
-                              padding: EdgeInsets.only(
-                                  right: index.isEven ? 10 : 0, bottom: 10),
-                              child: NoteCard(note: notes[index]),
-                            ),
+                          crossAxisSpacing: 10,
+                          itemCount: notes.length,
+                          itemBuilder: (context, index) => Padding(
+                            padding: EdgeInsets.only(bottom: 10),
+                            child: NoteCard(note: notes[index]),
                           ),
+                          physics: BouncingScrollPhysics(),
+                          staggeredTileBuilder: (index) {
+                            return StaggeredTile.count(
+                                index % 3 == 0 ? 2 : 1, 1);
+                          },
                         )
                       : SizedBox(
                           height: MediaQuery.of(context).size.height / 2,

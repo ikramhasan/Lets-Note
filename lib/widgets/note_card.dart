@@ -33,6 +33,7 @@ class NoteCard extends StatelessWidget {
             ),
             Text(
               note.description,
+              maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: GoogleFonts.ubuntu(
                 fontSize: 14,
