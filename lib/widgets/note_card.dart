@@ -23,15 +23,25 @@ class NoteCard extends StatelessWidget {
           children: [
             Text(
               note.title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.black,
               ),
             ),
             Text(
-              DateFormat.yMMMMd('en_US').format(note.createdAt),
+              note.description,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 14,
+                color: Colors.grey[800],
+              ),
+            ),
+            Text(
+              DateFormat.yMMMMd('en_US').format(note.createdAt),
+              style: TextStyle(
+                fontSize: 12,
                 color: Colors.grey[800],
               ),
             ),

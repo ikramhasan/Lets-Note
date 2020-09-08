@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,8 @@ class _AddNoteState extends State<AddNote> {
 
   @override
   Widget build(BuildContext context) {
+    final database = Provider.of<AppDatabase>(context);
+
     final colorList = [
       Color(0xFF82DEE9),
       Color(0xFFFEAA93),
@@ -33,9 +36,8 @@ class _AddNoteState extends State<AddNote> {
       Color(0xFFCBB8CB),
       Color(0xFFC29BB8),
     ];
-    Color color = colorList[0];
 
-    final database = Provider.of<AppDatabase>(context);
+    Color color = colorList[0];
 
     if (widget.note != null) {
       _titleController.text = widget.note.title;
@@ -57,6 +59,14 @@ class _AddNoteState extends State<AddNote> {
       widget.note.description = _descriptionController.text;
       widget.note.colorValue = color.value;
       database.updateNote(widget.note);
+    }
+
+    buildTick(Note note, Color color) {
+      if (note == null) {
+        return Container();
+      } else if (note.colorValue == color.value) {
+        return Center(child: FaIcon(FontAwesomeIcons.check));
+      }
     }
 
     return Scaffold(
@@ -95,9 +105,7 @@ class _AddNoteState extends State<AddNote> {
                               borderRadius: BorderRadius.circular(10),
                               color: colorList[index],
                             ),
-                            //child: colorList[index] == color
-                            //    ? Icon(Icons.done)
-                            //    : Container(),
+                            child: buildTick(widget.note, colorList[index]),
                           ),
                         ),
                         SizedBox(width: 10),
@@ -149,8 +157,11 @@ class _AddNoteState extends State<AddNote> {
                 database.deleteNote(widget.note);
                 Navigator.pop(context);
               },
-              backgroundColor: Colors.red[400],
-              child: FaIcon(FontAwesomeIcons.trashAlt),
+              backgroundColor: Colors.red,
+              child: Lottie.asset(
+                'assets/animations/delete.json',
+                frameRate: FrameRate(60),
+              ),
             )
           : Container(),
     );

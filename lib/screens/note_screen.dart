@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:note_app/data/note_database.dart';
 import 'package:note_app/screens/add_note.dart';
 import 'package:note_app/widgets/note_card.dart';
@@ -28,12 +29,13 @@ class NoteScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
                 ),
                 InkWell(
+                  borderRadius: BorderRadius.circular(10),
+                  splashColor: Colors.blue,
                   onTap: () {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
                         backgroundColor: Colors.grey[900],
-                        //Theme.of(context).scaffoldBackgroundColor,
                         content: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -97,14 +99,20 @@ class NoteScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Container(
+                  child: Ink(
+                    padding: EdgeInsets.only(bottom: 5),
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
                       color: Colors.grey[800],
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(child: FaIcon(FontAwesomeIcons.search)),
+                    child: Center(
+                      child: Lottie.asset(
+                        'assets/animations/search.json',
+                        frameRate: FrameRate(60),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -117,10 +125,8 @@ class NoteScreen extends StatelessWidget {
                   final notes = snapshot.data ?? List();
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
-                        child: SpinKitCircle(
-                      color: Colors.white,
-                      size: 50,
-                    ));
+                      child: Lottie.asset('assets/animations/loading.json'),
+                    );
                   }
                   return snapshot.data.length > 0
                       ? GridView.count(
@@ -173,10 +179,10 @@ class NoteScreen extends StatelessWidget {
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) => AddNote()));
         },
-        backgroundColor: Colors.grey[800],
-        child: FaIcon(
-          FontAwesomeIcons.plus,
-          color: Colors.white,
+        backgroundColor: Colors.greenAccent,
+        child: Lottie.asset(
+          'assets/animations/add-new.json',
+          frameRate: FrameRate(60),
         ),
       ),
     );

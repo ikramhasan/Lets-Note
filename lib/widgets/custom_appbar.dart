@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:lottie/lottie.dart';
 
 class CustomAppbar extends StatelessWidget {
   final Function onTap;
@@ -16,23 +17,29 @@ class CustomAppbar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
+          InkWell(
+            splashColor: Colors.blue,
+            borderRadius: BorderRadius.circular(10),
             onTap: () {
               Navigator.pop(context);
             },
-            child: Container(
+            child: Ink(
               height: 50,
               width: 50,
               decoration: BoxDecoration(
                 color: Colors.grey[800],
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Center(child: FaIcon(FontAwesomeIcons.search)),
+              child: Center(
+                child: FaIcon(FontAwesomeIcons.arrowLeft),
+              ),
             ),
           ),
-          GestureDetector(
+          InkWell(
+            splashColor: Colors.blue,
+            borderRadius: BorderRadius.circular(10),
             onTap: onTap,
-            child: Container(
+            child: Ink(
               height: 50,
               width: 80,
               decoration: BoxDecoration(
@@ -42,7 +49,10 @@ class CustomAppbar extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Save',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),
