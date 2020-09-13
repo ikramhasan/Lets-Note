@@ -10,19 +10,21 @@ Go to the [releases page](https://github.com/ikramhasan/Flutter-Note-App/release
 
 <br>
 
-|        Empty Note Screen        |        Add Note Screen        |                       Edit/Show Note Screen                       |
-| :-----------------------------: | :---------------------------: | :---------------------------------------------------------------: |
+|                         Empty Note Screen                         |                         Add Note Screen                         |                      Edit/Show Note Screen                       |
+| :---------------------------------------------------------------: | :-------------------------------------------------------------: | :--------------------------------------------------------------: |
 | <img src="screenshots/empty.note.png" alt="drawing" width="270"/> | <img src="screenshots/add.note.png" alt="drawing" width="270"/> | <img src="screenshots/edit.note.png" alt="drawing" width="270"/> |
 
-|        Home Screen        |        Search Screen        |
-| :-----------------------: | :-------------------------: |
-| <img src="screenshots/home.png" alt="drawing" width="270"/> | <img src="screenshots/search.note.png" alt="drawing" width="270"/>|
+|                         Home Screen                         |                           Search Screen                            |
+| :---------------------------------------------------------: | :----------------------------------------------------------------: |
+| <img src="screenshots/home.png" alt="drawing" width="270"/> | <img src="screenshots/search.note.png" alt="drawing" width="270"/> |
 
 ## Upcoming Features
 
-- Improved search functionality
-- Convert Gridview to Staggeredgridview
-- Online database
+- [ ] Improved search functionality
+- [ ] Option to change grid layout in Home Screen
+- [x] Convert Gridview to Staggeredgridview
+- [x] Add local database
+- [ ] Online database
 
 ## My Socials
 
@@ -37,6 +39,9 @@ Go to the [releases page](https://github.com/ikramhasan/Flutter-Note-App/release
 ## Thanks
 
 - [Amal](https://dribbble.com/amalvp) for his [Lightweight note app design](https://dribbble.com/shots/11875872-A-simple-and-lightweight-note-app)
+- [Gaetan Gonzalez](https://lottiefiles.com/gaetangonzalez) for the [Add button animation](https://lottiefiles.com/9788-add-new)
+- [wenhao](https://lottiefiles.com/user/130297) for his [Delete button animation](https://lottiefiles.com/15120-delete)
+- [Mohit Saini](https://lottiefiles.com/mohitsaini155) for his [Search button animation](https://lottiefiles.com/8282-search-icon)
 - [Flutter](https://flutter.dev) for the great cross platform framework
 
 [1]: http://www.twitter.com/ikramhasandev
