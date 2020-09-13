@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:note_app/data/note_database.dart';
 
 class NoteBloc {

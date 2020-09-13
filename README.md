@@ -10,13 +10,13 @@ Go to the [releases page](https://github.com/ikramhasan/Flutter-Note-App/release
 
 <br>
 
-|        Empty Note Screen        |        Add Note Screen        |     Edit/Show Note Screen      |
-| :-----------------------------: | :---------------------------: | :----------------------------: |
-| ![](screenshots/empty.note.jpg) | ![](screenshots/add.note.jpg) | ![](screenshots/edit.note.jpg) |
+|        Empty Note Screen        |        Add Note Screen        |                       Edit/Show Note Screen                       |
+| :-----------------------------: | :---------------------------: | :---------------------------------------------------------------: |
+| <img src="screenshots/empty.note.png" alt="drawing" width="270"/> | <img src="screenshots/add.note.png" alt="drawing" width="270"/> | <img src="screenshots/edit.note.png" alt="drawing" width="270"/> |
 
 |        Home Screen        |        Search Screen        |
 | :-----------------------: | :-------------------------: |
-| ![](screenshots/home.jpg) | ![](screenshots/search.jpg) |
+| <img src="screenshots/home.png" alt="drawing" width="270"/> | <img src="screenshots/search.note.png" alt="drawing" width="270"/>|
 
 ## Upcoming Features
 

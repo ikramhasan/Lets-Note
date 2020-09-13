@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+enum ButtonType { ADD_BUTTON, DELETE_BUTTON }
+
 class AppButton extends StatelessWidget {
   final ButtonType buttonType;
   final Function onPressed;
@@ -25,4 +27,4 @@ class AppButton extends StatelessWidget {
   }
 }
 
-enum ButtonType { ADD_BUTTON, DELETE_BUTTON }
+

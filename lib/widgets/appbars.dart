@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
+enum AppbarType { NOTE_SCREEN, ADD_NOTE_SCREEN }
+
 class CustomAppbar extends StatelessWidget {
   final AppbarType appbarType;
   final Function onTap;
@@ -93,4 +95,4 @@ class CustomAppbar extends StatelessWidget {
   }
 }
 
-enum AppbarType { NOTE_SCREEN, ADD_NOTE_SCREEN }
+
