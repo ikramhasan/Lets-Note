@@ -22,9 +22,11 @@ Go to the [releases page](https://github.com/ikramhasan/Flutter-Note-App/release
 
 - [ ] Improved search functionality
 - [ ] Option to change grid layout in Home Screen
+- [ ] Use sqflite insted of moor for local database
 - [x] Convert Gridview to Staggeredgridview
 - [x] Add local database
 - [ ] Online database
+- [ ] Cross platform app + web and desktop version
 
 ## My Socials
 
