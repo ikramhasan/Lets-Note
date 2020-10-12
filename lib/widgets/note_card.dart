@@ -22,13 +22,19 @@ class NoteCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              note.title,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 3,
-              style: GoogleFonts.ubuntu(
-                fontSize: 20,
-                color: Colors.black,
+            Hero(
+              tag: note.title,
+              child: Material(
+                type: MaterialType.transparency,
+                child: Text(
+                  note.title,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  style: GoogleFonts.ubuntu(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ),
             SizedBox(height: 5),

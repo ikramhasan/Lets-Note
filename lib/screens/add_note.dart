@@ -116,15 +116,21 @@ class _AddNoteState extends State<AddNote> {
                   },
                 ),
               ),
-              TextField(
-                controller: _titleController,
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-                style: GoogleFonts.ubuntu(fontSize: 35),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: 'Title',
-                  hintStyle: GoogleFonts.ubuntu(fontSize: 35),
+              Hero(
+                tag: _titleController.text,
+                child: Material(
+                  type: MaterialType.transparency,
+                  child: TextField(
+                    controller: _titleController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    style: GoogleFonts.ubuntu(fontSize: 35),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Title',
+                      hintStyle: GoogleFonts.ubuntu(fontSize: 35),
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
